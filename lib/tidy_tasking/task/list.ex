@@ -20,6 +20,7 @@ defmodule TidyTasking.Task.List do
   def changeset(list, attrs) do
     list
     |> cast(attrs, [:title, :status])
+    |> cast_assoc(:todos)
     |> validate_required([:title, :status])
   end
 end

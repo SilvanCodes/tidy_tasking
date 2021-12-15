@@ -1,6 +1,8 @@
 defmodule TidyTaskingWeb.Router do
   use TidyTaskingWeb, :router
 
+  import Phoenix.LiveView.Router
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -16,6 +18,8 @@ defmodule TidyTaskingWeb.Router do
 
   scope "/", TidyTaskingWeb do
     pipe_through :browser
+
+    live "/task", TaskLive
 
     get "/", PageController, :index
   end
